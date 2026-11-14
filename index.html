@@ -19,22 +19,7 @@
       margin-bottom: 1em;
       color: #111827;
     }
-    h2 {
-      font-size: 1.1em;
-      margin-top: 1.6em;
-      margin-bottom: 0.4em;
-      color: #111827;
-    }
     p { margin: 0.7em 0; }
-    ul { margin: 0.5em 0 0.8em 1.2em; padding: 0; }
-    li { margin: 0.3em 0; }
-    .note {
-      background: #f3f4f6;
-      border-left: 4px solid #2563eb;
-      padding: 12px 16px;
-      margin: 1.4em 0;
-      border-radius: 4px;
-    }
     button {
       margin-top: 24px;
       padding: 15px 22px;
@@ -49,11 +34,7 @@
     }
     button:hover { background: #1d4ed8; }
     button:disabled { background: #93b4f5; cursor: default; }
-    .hint { color: #6b7280; font-size: 0.9em; margin-top: 0.4em; }
     #status { margin-top: 16px; color: #374151; }
-    #fallback { display: none; margin-top: 28px; }
-    #fallback ul { padding-left: 20px; }
-    #fallback a { color: #2563eb; }
   </style>
 </head>
 <body>
@@ -66,27 +47,8 @@
 
   <p>К участию приглашаются студенты московских вузов. Заполнение анкеты займёт около 10 минут.</p>
 
-  <div class="note">
-    <p><strong>Опрос анонимный:</strong> мы не собираем сведения, позволяющие установить вашу личность. Ответы будут анализироваться в обобщённом виде и использоваться только в исследовательских целях.</p>
-    <p>Участие полностью добровольное. Здесь нет правильных или неправильных ответов — нам важны ваш опыт и ваше мнение.</p>
-  </div>
-
-  <h2>Что вас ждёт</h2>
-  <ul>
-    <li>Несколько коротких вопросов о вас и вашей учёбе.</li>
-    <li>6 описаний учебных ситуаций, которые нужно оценить.</li>
-    <li>Вопросы о том, как вы используете ИИ и какие правила действуют в вашем вузе.</li>
-  </ul>
-
-  <p class="hint">Нажимая кнопку ниже, вы подтверждаете, что вам 18 лет или больше, и соглашаетесь участвовать в исследовании.</p>
-
   <button id="go">Пройти опрос</button>
   <div id="status"></div>
-
-  <div id="fallback">
-    <p>Если переход не сработал автоматически, выберите любую из ссылок ниже — все они ведут на тот же опрос:</p>
-    <ul id="fallback-list"></ul>
-  </div>
 
   <script>
     // ==== ЗАМЕНИ ЭТИ 12 ССЫЛОК НА СВОИ ====
@@ -106,22 +68,9 @@
     ];
     // =====================================
 
-    const list = document.getElementById("fallback-list");
-    LINKS.forEach((url, i) => {
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = url;
-      a.textContent = "Набор " + (i + 1);
-      a.target = "_blank";
-      a.rel = "noopener";
-      li.appendChild(a);
-      list.appendChild(li);
-    });
-
     document.getElementById("go").addEventListener("click", () => {
       const btn = document.getElementById("go");
       const status = document.getElementById("status");
-      const fallback = document.getElementById("fallback");
 
       btn.disabled = true;
       btn.textContent = "Переходим…";
@@ -130,8 +79,8 @@
       const deck = Math.floor(Math.random() * 12) + 1;
       const url = LINKS[deck - 1];
 
-      status.innerHTML = 'Открываем опрос… Если страница не открылась, <a href="' + url + '">нажмите сюда</a>.';
-      fallback.style.display = "block";
+      // Показываем ссылку на всякий случай прямо в тексте (без списка)
+      status.innerHTML = 'Открываем опрос… Если страница не открылась автоматически, <a href="' + url + '">нажмите сюда</a>.';
 
       setTimeout(() => {
         window.location.href = url;
