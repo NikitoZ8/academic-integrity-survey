@@ -51,22 +51,21 @@
   <div id="status"></div>
 
   <script>
-    // ==== ЗАМЕНИ ЭТИ 12 ССЫЛОК НА СВОИ ====
+    // Публичные ссылки на анкеты в порядке номеров колод.
     const LINKS = [
-      "https://forms.yandex.ru/u/REPLACE_1",
-      "https://forms.yandex.ru/u/REPLACE_2",
-      "https://forms.yandex.ru/u/REPLACE_3",
-      "https://forms.yandex.ru/u/REPLACE_4",
-      "https://forms.yandex.ru/u/REPLACE_5",
-      "https://forms.yandex.ru/u/REPLACE_6",
-      "https://forms.yandex.ru/u/REPLACE_7",
-      "https://forms.yandex.ru/u/REPLACE_8",
-      "https://forms.yandex.ru/u/REPLACE_9",
-      "https://forms.yandex.ru/u/REPLACE_10",
-      "https://forms.yandex.ru/u/REPLACE_11",
-      "https://forms.yandex.ru/u/REPLACE_12"
+      "https://forms.yandex.ru/u/6afb2c234a052d141e18fc68", // Анкета (1), колода 01
+      "https://forms.yandex.ru/u/6b0470d76f1ca415779e2d01", // Анкета (2), колода 02
+      "https://forms.yandex.ru/u/6b04713149af476cd5523d99", // Анкета (3), колода 03
+      "https://forms.yandex.ru/u/6b04714349af476189523e0e", // Анкета (4), колода 04
+      "https://forms.yandex.ru/u/6b047154974ab287f63b73bc", // Анкета (5), колода 05
+      "https://forms.yandex.ru/u/6b047170974ab283743b743a", // Анкета (6), колода 06
+      "https://forms.yandex.ru/u/6b047315974ab287f63b74a5", // Анкета (7), колода 07
+      "https://forms.yandex.ru/u/6b04734295add57e6fbb29ef", // Анкета (8), колода 08
+      "https://forms.yandex.ru/u/6b047367902902003159171d", // Анкета (9), колода 09
+      "https://forms.yandex.ru/u/6b04738349af476afe523ef0", // Анкета (10), колода 10
+      "https://forms.yandex.ru/u/6b04739d49af4713b3523f0c", // Анкета (11), колода 11
+      "https://forms.yandex.ru/u/6b0473d46f1ca416d39e2daf"  // Анкета (12), колода 12
     ];
-    // =====================================
 
     document.getElementById("go").addEventListener("click", () => {
       const btn = document.getElementById("go");
